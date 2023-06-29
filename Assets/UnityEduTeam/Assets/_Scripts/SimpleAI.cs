@@ -100,19 +100,15 @@ public class SimpleAI : MonoBehaviour {
 
         playerTarget = null;
         playerSeen = false;
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        if (players.Length == 0)
+        if (player == null)
         {
             return;
         }
-        else
-        {
-           // Debug.Log("Found Player");
-        }
 
-        foreach (GameObject player in players)
-        {
+
+
             Vector3 dirToTarget = (player.transform.position - transform.position).normalized;
             RaycastHit hit;
             if (Physics.Raycast(transform.position, dirToTarget, out hit))
@@ -130,7 +126,7 @@ public class SimpleAI : MonoBehaviour {
                         }
                     }
                 }
-            }
+            
         }
     }
 
